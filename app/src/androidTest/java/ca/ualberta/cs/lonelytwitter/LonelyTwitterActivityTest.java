@@ -2,6 +2,7 @@ package ca.ualberta.cs.lonelytwitter;
 
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
+import android.view.View;
 import android.widget.EditText;
 
 import com.robotium.solo.Solo;
@@ -68,7 +69,10 @@ public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2<
 
         solo.clickInList(0);
         solo.assertCurrentActivity("wrong activity", EditTweetActivity.class);
+        assertTrue((solo.getView(R.id.MessageTweet).getVisibility() ==  View.VISIBLE));
         assertTrue(solo.waitForText("Test Tweet"));
+
+        assertTrue((solo.getView(R.id.dateTweet).getVisibility() ==  View.VISIBLE));
         SimpleDateFormat sdf = new SimpleDateFormat( "yyyy-MM-dd" );
         assertTrue(solo.waitForText(sdf.format( new Date())));
 
