@@ -33,6 +33,7 @@ public class LonelyTwitterActivity extends Activity {
 	private EditText bodyText;
 	private ListView oldTweetsList;
 	private ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
+	private Tweet selected;
 	private ArrayAdapter<Tweet> adapter;
 
 	@Override
@@ -70,7 +71,10 @@ public class LonelyTwitterActivity extends Activity {
 
 			public void onItemClick(AdapterView<?> adatperView, View view, int position, long id){
 
+				selected = (Tweet) oldTweetsList.getItemAtPosition(position);
+
 				Intent intent = new Intent(activity, EditTweetActivity.class);
+				intent.putExtra("counter", selected);
 				startActivity(intent);
 
 			}

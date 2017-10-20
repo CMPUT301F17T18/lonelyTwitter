@@ -8,6 +8,9 @@ import com.robotium.solo.Solo;
 
 import junit.framework.TestCase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2<LonelyTwitterActivity> {
     private Solo solo;
 
@@ -53,6 +56,24 @@ public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2<
         solo.assertCurrentActivity("wrong activity", EditTweetActivity.class);
 
     }
+
+    public void testDisplayTweet(){
+        solo.assertCurrentActivity("Wrong Activity", LonelyTwitterActivity.class);
+        solo.clickOnButton("Clear");
+
+        solo.enterText((EditText) solo.getView(R.id.body), "Test Tweet!");
+        solo.clickOnButton("Save");
+        solo.enterText((EditText) solo.getView(R.id.body), "");
+        solo.waitForText("Test Tweet!");
+
+        solo.clickInList(0);
+        solo.assertCurrentActivity("wrong activity", EditTweetActivity.class);
+        assertTrue(solo.waitForText("Test Tweet"));
+        SimpleDateFormat sdf = new SimpleDateFormat( "yyyy-MM-dd" );
+        assertTrue(solo.waitForText(sdf.format( new Date())));
+
+    }
+
 
     /**
      * runs after tests.

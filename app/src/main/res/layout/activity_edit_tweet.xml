@@ -6,4 +6,25 @@
     android:layout_height="match_parent"
     tools:context="ca.ualberta.cs.lonelytwitter.EditTweetActivity">
 
+    <EditText
+        android:id="@+id/dateTweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:ems="10"
+        android:inputType="date"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="27dp" />
+
+    <EditText
+        android:id="@+id/MessageTweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/dateTweet"
+        android:layout_alignStart="@+id/dateTweet"
+        android:layout_marginBottom="62dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
 </RelativeLayout>
